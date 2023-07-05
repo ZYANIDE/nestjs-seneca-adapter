@@ -1,0 +1,7 @@
+{
+  "seneca": {
+    "listener": {
+      "port": 20202
+    }
+  }
+}

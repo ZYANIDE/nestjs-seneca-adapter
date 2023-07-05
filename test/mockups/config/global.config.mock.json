@@ -1,0 +1,9 @@
+{
+  "seneca": {
+    "listener": {
+      "host": "global.localhost",
+      "port": 10101
+    }
+  },
+  "isGlobal": true
+}

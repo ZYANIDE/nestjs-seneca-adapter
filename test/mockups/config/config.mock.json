@@ -1,0 +1,7 @@
+{
+  "global": "./test/mockups/config/global.config.mock.json",
+  "local": "./test/mockups/config/local.config.mock.json",
+  "development": "./test/mockups/config/dev.config.mock.json",
+  "test": "./test/mockups/config/test.config.mock.json",
+  "production": "./test/mockups/config/prod.config.mock.json"
+}

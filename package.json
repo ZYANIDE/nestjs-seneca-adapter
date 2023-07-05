@@ -1,0 +1,107 @@
+{
+  "name": "nestjs-seneca-adapter",
+  "version": "1.0.0",
+  "description": "An adapter to use Seneca over the NestJS framework",
+  "author": "Noah Snoeks",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "homepage": "https://github.com/ZYANIDE/nestjs-seneca-adapter#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZYANIDE/nestjs-seneca-adapter"
+  },
+  "bugs": {
+    "url": "https://github.com/ZYANIDE/nestjs-seneca-adapter/issues"
+  },
+  "keywords": [
+    "seneca",
+    "nestjs",
+    "microservice",
+    "extension",
+    "transport",
+    "strategy",
+    "typescript"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "example": "nest start",
+    "example:local": "cross-env NODE_ENV=local VERBOSE=true nest start --watch",
+    "example:dev": "cross-env NODE_ENV=development VERBOSE=true nest start",
+    "example:test": "cross-env NODE_ENV=test VERBOSE=true nest start",
+    "example:prod": "cross-env NODE_ENV=production nest start",
+    "example:watch": "nest start --watch",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:ci": "npm run test:cov",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "test:cov": "cross-env NODE_ENV=test jest --coverage",
+    "prebuild": "rimraf dist && rimraf src/export.ts",
+    "build": "npm run prebuild && npm run build:export && npm run build:dist",
+    "build:dist": "tsc",
+    "build:export": "cti entrypoint -n -b -i *.spec.ts  -e declarations -o export.ts src",
+    "build:docs": "rimraf docs && typedoc --options typedoc.json --tsconfig tsconfig.json",
+    "build:stage": "git add ./dist",
+    "lint": "eslint \"{src,test,example}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"example/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" \"example/**/*.ts\"",
+    "commit": "cz"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "@nestjs/microservices": "^9.4.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "jsonic": "^1.0.1",
+    "seneca": "^3.30.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.0.0",
+    "@nestjs/schematics": "^9.1.0",
+    "@nestjs/testing": "^9.0.0",
+    "@types/jest": "29.5.0",
+    "@types/jsonic": "^0.3.1",
+    "@types/node": "18.15.11",
+    "@types/seneca": "^2.1.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "commitizen": "^4.3.0",
+    "create-ts-index": "^1.14.0",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "29.5.0",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "semantic-release": "^21.0.7",
+    "ts-jest": "29.0.5",
+    "typescript": "^4.7.4"
+  },
+  "jest": {
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.ts"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "nestjs-seneca-adapter": "src/index"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "seneca": {
+    "listener": {
+      "host": "test.localhost"
+    }
+  }
+}
